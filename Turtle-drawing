@@ -1,0 +1,88 @@
+public class Main {
+
+    static void drawCircle(Turtle t, double x, double y, double radius) {
+        double circumference = 2 * Math.PI * radius;
+        int steps = 360;
+        double stepSize = circumference / steps;
+        t.up();
+        t.setPosition(x + radius, y, 0);
+        t.setDirection(90);
+        t.down();
+        for (int i = 0; i < steps; i++) {
+            t.forward(stepSize);
+            t.left(1);
+        }
+        t.up();
+    }
+
+    public static void main(String[] args) {
+        Turtle shi = new Turtle();
+        shi.speed(1);
+        shi.width(3);
+        shi.up();
+
+        // Body outline (black border)
+        shi.penColor("black");
+        drawCircle(shi, 0, -40, 90);
+
+        // Head outline (black border)
+        drawCircle(shi, 0, 90, 65);
+
+        // Ears (black)
+        shi.setPosition(-52, 148, 0);
+        shi.dot("black", 55);
+        shi.setPosition(52, 148, 0);
+        shi.dot("black", 55);
+
+        // Eye patches (black)
+        shi.setPosition(-28, 93, 0);
+        shi.dot("black", 48);
+        shi.setPosition(28, 93, 0);
+        shi.dot("black", 48);
+
+        // Eyes (white)
+        shi.setPosition(-28, 93, 0);
+        shi.dot("white", 18);
+        shi.setPosition(28, 93, 0);
+        shi.dot("white", 18);
+
+        // Pupils (black)
+        shi.setPosition(-28, 93, 0);
+        shi.dot("black", 8);
+        shi.setPosition(28, 93, 0);
+        shi.dot("black", 8);
+
+        // Nose (black)
+        shi.setPosition(0, 70, 0);
+        shi.dot("black", 22);
+
+        // Mouth
+        shi.penColor("black");
+        shi.width(2);
+        shi.setPosition(-12, 58, 0);
+        shi.down();
+        shi.setPosition(0, 63, 0);
+        shi.setPosition(12, 58, 0);
+        shi.up();
+
+        // Arms (black)
+        shi.setPosition(-95, -20, 0);
+        shi.dot("black", 60);
+        shi.setPosition(95, -20, 0);
+        shi.dot("black", 60);
+
+        // Legs (black)
+        shi.setPosition(-38, -118, 0);
+        shi.dot("black", 65);
+        shi.setPosition(38, -118, 0);
+        shi.dot("black", 65);
+
+        // Feet (white toes)
+        shi.setPosition(-38, -135, 0);
+        shi.dot("white", 30);
+        shi.setPosition(38, -135, 0);
+        shi.dot("white", 30);
+
+        shi.hide();
+    }
+}
